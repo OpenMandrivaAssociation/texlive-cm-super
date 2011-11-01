@@ -30,33 +30,23 @@ typesetting quality. The fonts exhibit the same metrics as the
 MetaFont-encoded originals.
 
 %pre
+    %_texmf_updmap_pre
     %_texmf_mktexlsr_pre
 
 %post
-sed -i	-e 's/^#! \(MixedMap cm-super-t1.map\)/\1/'	\
-	-e 's/^#! \(MixedMap cm-super-t2a.map\)/\1/'	\
-	-e 's/^#! \(MixedMap cm-super-t2b.map\)/\1/'	\
-	-e 's/^#! \(MixedMap cm-super-t2c.map\)/\1/'	\
-	-e 's/^#! \(MixedMap cm-super-ts1.map\)/\1/'	\
-	-e 's/^#! \(MixedMap cm-super-x2.map\)/\1/'	\
-	%{_texmfdir}/web2c/updmap.cfg
+    %_texmf_updmap_post
     %_texmf_mktexlsr_post
 
 %preun
-    %_texmf_mktexlsr_preun
+    if [ $1 -eq 0 ]; then
+	%_texmf_updmap_pre
+	%_texmf_mktexlsr_pre
+    fi
 
 %postun
     if [ $1 -eq 0 ]; then
-	if [ -f %{_texmfdir}/web2c/updmap.cfg ]; then
-	    sed -i  -e 's/^\(MixedMap cm-super-t1.map\)/#! \1/'	\
-		    -e 's/^\(MixedMap cm-super-t2a.map\)/#! \1/'	\
-		    -e 's/^\(MixedMap cm-super-t2b.map\)/#! \1/'	\
-		    -e 's/^\(MixedMap cm-super-t2c.map\)/#! \1/'	\
-		    -e 's/^\(MixedMap cm-super-ts1.map\)/#! \1/'	\
-		    -e 's/^\(MixedMap cm-super-x2.map\)/#! \1/'	\
-		%{_texmfdir}/web2c/updmap.cfg
-	fi
-	%_texmf_mltexlsr_post
+	%_texmf_updmap_post
+	%_texmf_mktexlsr_post
     fi
 
 #-----------------------------------------------------------------------
@@ -901,6 +891,7 @@ sed -i	-e 's/^#! \(MixedMap cm-super-t1.map\)/\1/'	\
 %{_texmfdistdir}/fonts/type1/public/cm-super/sfxc2986.pfb
 %{_texmfdistdir}/fonts/type1/public/cm-super/sfxc3583.pfb
 %{_texmfdistdir}/tex/latex/cm-super/type1ec.sty
+%_texmf_updmap_d/cm-super
 %doc %{_texmfdistdir}/doc/fonts/cm-super/COPYING
 %doc %{_texmfdistdir}/doc/fonts/cm-super/ChangeLog
 %doc %{_texmfdistdir}/doc/fonts/cm-super/FAQ
@@ -918,3 +909,12 @@ sed -i	-e 's/^#! \(MixedMap cm-super-t1.map\)/\1/'	\
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar dvips fonts tex doc %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_texmf_updmap_d}
+cat > %{buildroot}%{_texmf_updmap_d}/cm-super <<EOF
+MixedMap cm-super-t1.map
+MixedMap cm-super-t2a.map
+MixedMap cm-super-t2b.map
+MixedMap cm-super-t2c.map
+MixedMap cm-super-ts1.map
+MixedMap cm-super-x2.map
+EOF
