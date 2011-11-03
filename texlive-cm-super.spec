@@ -1,3 +1,9 @@
+# revision 15878
+# category Package
+# catalog-ctan /fonts/ps-type1/cm-super
+# catalog-date 2008-01-16 21:31:11 +0100
+# catalog-license gpl
+# catalog-version undef
 Name:		texlive-cm-super
 Version:	20080116
 Release:	1
@@ -899,6 +905,7 @@ MetaFont-encoded originals.
 %doc %{_texmfdistdir}/doc/fonts/cm-super/README
 %doc %{_texmfdistdir}/doc/fonts/cm-super/TODO
 %doc %{_texmfdistdir}/doc/fonts/cm-super/cm-super-inf.tar.bz2
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -909,6 +916,8 @@ MetaFont-encoded originals.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar dvips fonts tex doc %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
 mkdir -p %{buildroot}%{_texmf_updmap_d}
 cat > %{buildroot}%{_texmf_updmap_d}/cm-super <<EOF
 MixedMap cm-super-t1.map
