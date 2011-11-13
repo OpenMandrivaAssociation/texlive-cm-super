@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-cm-super
 Version:	20080116
-Release:	1
+Release:	2
 Summary:	CM-Super family of fonts
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/ps-type1/cm-super
@@ -17,12 +17,8 @@ BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
 Requires(post):	texlive-kpathsea
-Provides:	tetex-cmsuper = %{version}
-Provides:	texlive-texmf-cmsuper = %{version}
-Obsoletes:	tetex-cmsuper <= 0.3.3
-Conflicts:	tetex-cmsuper <= 0.3.3
-Obsoletes:	texlive-texmf-cmsuper <= 2007
-Conflicts:	texlive-texmf-cmsuper <= 2007
+%rename tetex-cmsuper
+%rename texlive-texmf-cmsuper
 Conflicts:	texlive-texmf <= 20110705-3
 Conflicts:	texlive-doc <= 20110705-3
 Requires(post):	texlive-tetex
