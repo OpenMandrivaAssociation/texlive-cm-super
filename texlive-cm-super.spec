@@ -19,8 +19,6 @@ Requires(pre):	texlive-tlpkg
 Requires(post):	texlive-kpathsea
 %rename tetex-cmsuper
 %rename texlive-texmf-cmsuper
-Conflicts:	texlive-texmf <= 20110705-3
-Conflicts:	texlive-doc <= 20110705-3
 Requires(post):	texlive-tetex
 
 %description
@@ -32,24 +30,12 @@ Cyrillic-based languages), and bringing many ameliorations in
 typesetting quality. The fonts exhibit the same metrics as the
 MetaFont-encoded originals.
 
-%pre
-    %_texmf_updmap_pre
-    %_texmf_mktexlsr_pre
-
 %post
-    %_texmf_mktexlsr_post
-    %_texmf_updmap_post
-
-%preun
-    if [ $1 -eq 0 ]; then
-	%_texmf_updmap_pre
-	%_texmf_mktexlsr_pre
-    fi
+    %{_sbindir}/texlive.post
 
 %postun
     if [ $1 -eq 0 ]; then
-	%_texmf_mktexlsr_post
-	%_texmf_updmap_post
+	%{_sbindir}/texlive.post
     fi
 
 #-----------------------------------------------------------------------
@@ -902,7 +888,6 @@ MetaFont-encoded originals.
 %doc %{_texmfdistdir}/doc/fonts/cm-super/README
 %doc %{_texmfdistdir}/doc/fonts/cm-super/TODO
 %doc %{_texmfdistdir}/doc/fonts/cm-super/cm-super-inf.tar.bz2
-%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -913,8 +898,6 @@ MetaFont-encoded originals.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar dvips fonts tex doc %{buildroot}%{_texmfdistdir}
-mkdir -p %{buildroot}%{_tlpkgobjdir}
-cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
 mkdir -p %{buildroot}%{_texmf_updmap_d}
 cat > %{buildroot}%{_texmf_updmap_d}/cm-super <<EOF
 MixedMap cm-super-t1.map
