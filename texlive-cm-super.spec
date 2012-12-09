@@ -907,3 +907,22 @@ MixedMap cm-super-t2c.map
 MixedMap cm-super-ts1.map
 MixedMap cm-super-x2.map
 EOF
+
+
+%changelog
+* Tue Jan 03 2012 Paulo Andrade <pcpa@mandriva.com.br> 20080116-3
++ Revision: 750328
+- Rebuild to reduce used resources
+
+* Sun Nov 13 2011 Paulo Andrade <pcpa@mandriva.com.br> 20080116-2
++ Revision: 730341
+- Use rename macro instead of mix of provides/conflicts/obsoletes
+
+* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 20080116-1
++ Revision: 718086
+- texlive-cm-super
+- texlive-cm-super
+- texlive-cm-super
+- texlive-cm-super
+- texlive-cm-super
+
