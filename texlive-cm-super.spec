@@ -5,8 +5,8 @@
 # catalog-license gpl
 # catalog-version undef
 Name:		texlive-cm-super
-Version:	20080116
-Release:	11
+Version:	20170414
+Release:	1
 Summary:	CM-Super family of fonts
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/ps-type1/cm-super
