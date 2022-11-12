@@ -5,8 +5,8 @@ Summary:	CM-Super family of fonts
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/ps-type1/cm-super
 License:	GPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cm-super.r15878.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cm-super.doc.r15878.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cm-super.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cm-super.doc.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
