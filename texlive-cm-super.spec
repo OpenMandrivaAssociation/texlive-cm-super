@@ -1,18 +1,12 @@
-# revision 15878
-# category Package
-# catalog-ctan /fonts/ps-type1/cm-super
-# catalog-date 2008-01-16 21:31:11 +0100
-# catalog-license gpl
-# catalog-version undef
 Name:		texlive-cm-super
-Version:	20190228
+Version:	15878
 Release:	1
 Summary:	CM-Super family of fonts
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/ps-type1/cm-super
 License:	GPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cm-super.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cm-super.doc.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cm-super.r15878.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cm-super.doc.r15878.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -31,12 +25,12 @@ typesetting quality. The fonts exhibit the same metrics as the
 MetaFont-encoded originals.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -891,7 +885,7 @@ MetaFont-encoded originals.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1
+%autosetup -p1 -c -a1
 
 %build
 
@@ -907,22 +901,3 @@ MixedMap cm-super-t2c.map
 MixedMap cm-super-ts1.map
 MixedMap cm-super-x2.map
 EOF
-
-
-%changelog
-* Tue Jan 03 2012 Paulo Andrade <pcpa@mandriva.com.br> 20080116-3
-+ Revision: 750328
-- Rebuild to reduce used resources
-
-* Sun Nov 13 2011 Paulo Andrade <pcpa@mandriva.com.br> 20080116-2
-+ Revision: 730341
-- Use rename macro instead of mix of provides/conflicts/obsoletes
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 20080116-1
-+ Revision: 718086
-- texlive-cm-super
-- texlive-cm-super
-- texlive-cm-super
-- texlive-cm-super
-- texlive-cm-super
-
