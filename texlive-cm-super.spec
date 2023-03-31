@@ -1,6 +1,6 @@
 Name:		texlive-cm-super
 Version:	15878
-Release:	1
+Release:	2
 Summary:	CM-Super family of fonts
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/ps-type1/cm-super
