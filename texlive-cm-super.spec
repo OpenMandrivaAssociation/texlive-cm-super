@@ -12,7 +12,8 @@ Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/cm-super.r%{tl_r
 Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/cm-super.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
 BuildSystem:	texlive
-Provides:	texlive(%{tl_name}) = %{tl_revision}
+Requires:	texlive-tlpkg
+Provides:	texlive(%{tl_name}) = %{version}
 
 %description
 The CM-Super family provides Adobe Type 1 fonts that replace the
@@ -22,3 +23,15 @@ European languages except Greek), and bringing many ameliorations in
 typesetting quality. The fonts exhibit the same metrics as the Metafont-
 encoded originals.
 
+
+%install -a
+mkdir -p %{buildroot}%{_texmf_updmap_d}
+cat > %{buildroot}%{_texmf_updmap_d}/%{tl_name} <<'TL_DROPIN_EOF'
+# from cm-super:
+MixedMap cm-super-t1.map
+MixedMap cm-super-t2a.map
+MixedMap cm-super-t2b.map
+MixedMap cm-super-t2c.map
+MixedMap cm-super-ts1.map
+MixedMap cm-super-x2.map
+TL_DROPIN_EOF
